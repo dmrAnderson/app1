@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-	get 'users/new'
-	post 'users/create'
+	resources :users
 	root 'users#index'
 end

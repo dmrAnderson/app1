@@ -1,12 +1,21 @@
 <h1>Users#new</h1>
-<p>
-	<% form_for(@user) do |f| %>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-		<%= f.label :email %>
-		<%= f.email_field :email %>
-		<%= f.label :password %>
-		<%= f.password_field :password %>
-		<%= f.submit 'Submit' %>
+	
+	<%= render 'layouts/error_of_validation' %>
+	
+	<%= form_for(@user) do |f| %>
+		<p>
+			<%= f.label :name %><br>
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.label :email %><br>
+			<%= f.email_field :email %>
+		</p>
+		<p>
+			<%= f.label :password %><br>
+			<%= f.password_field :password %>
+		</p>
+		<p>
+			<%= f.submit 'Submit' %>
+		</p>
 	<% end %>
-</p>

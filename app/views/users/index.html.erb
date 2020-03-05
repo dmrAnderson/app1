@@ -1,2 +1,15 @@
 <h1>Test</h1>
-<%= link_to  'Sing Up', users_new_path %>
+<%= form_for(@users) do |f| %>
+	<p>
+		<%= f.name %>
+	</p>
+	<p>
+		<%= f.email %>
+	</p>
+	<p>
+		<small>
+			<%= f.created_at %>
+		</small>
+	</p>
+<% end %>
+<%= link_to  'Sing Up', new_user_path %>
