@@ -1,5 +1,5 @@
-<h1>Users#new</h1>
-	
+<h1>Sing Up</h1>
+
 	<%= render 'layouts/error_of_validation' %>
 	
 	<%= form_for(@user) do |f| %>
@@ -16,6 +16,6 @@
 			<%= f.password_field :password %>
 		</p>
 		<p>
-			<%= f.submit 'Submit' %>
+			<%= f.submit 'Submit', class: 'btn btn-dark' %>
 		</p>
 	<% end %>

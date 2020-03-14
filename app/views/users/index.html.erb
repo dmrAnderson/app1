@@ -1,15 +1,17 @@
-<% @users.each do |f| %>
-	<div class="col-sm-4">	
-		<p>
-			<%= f.name %>
-		</p>
-		<p>
-			<%= f.email %>
-		</p>
-		<p>
-			<small>
-				<%= f.created_at %>
-			</small>
-		</p>
-	</div>
-<% end %>
+<div class='row'>
+	<% @users.each do |f| %>
+		<div class="col-sm-4">	
+			<p>
+				<%= f.name %>
+			</p>
+			<p>
+				<%= f.email %>
+			</p>
+			<p>
+				<small>
+					<%= f.created_at %>
+				</small>
+			</p>
+		</div>
+	<% end %>
+</div>
