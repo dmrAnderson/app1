@@ -1,5 +1,4 @@
-<h1>Sing Up</h1>
-<%= render 'layouts/error_of_validation' %>
+<h1><%= @user.name %> profile</h1>
 <%= form_for(@user) do |f| %>
 	<p>
 		<%= f.label :name %><br>
@@ -9,11 +8,8 @@
 		<%= f.label :email %><br>
 		<%= f.email_field :email %>
 	</p>
-	<p>
-		<%= f.label :password %><br>
-		<%= f.password_field :password %>
-	</p>
-	<p>
 		<%= f.submit 'Submit', class: 'btn btn-dark' %>
 	</p>
 <% end %>
+
+<!-- FIX -->

@@ -5,15 +5,15 @@ class SessionsController < ApplicationController
 	def create
 		@user = User.find_by_email(params[:session][:email])
 		if @user && @user.authenticate(params[:session][:password])
-			session[:user_id] = @user.id
-			redirect_to root_path, notice: 'OFFFFFFFFFFFFFFFFFFFFkkkkk'
+			log_in
+			redirect_to root_path, success: 'Welcome back, you Log In.'
 		else
-			render 'new'
+			render 'new', danger: 'Incorrect username or password.'
 		end
 	end
 
 	def destroy
 		reset_session
-		redirect_to root_path
+		redirect_to root_path, success: 'Bay-bay, it was nice to see you.'
 	end
 end
