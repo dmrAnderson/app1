@@ -1,19 +1,28 @@
 <h1>Sing Up</h1>
-<%= render 'layouts/error_of_validation' %>
-<%= form_for(@user) do |f| %>
-	<p>
-		<%= f.label :name %><br>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.label :email %><br>
-		<%= f.email_field :email %>
-	</p>
-	<p>
-		<%= f.label :password %><br>
-		<%= f.password_field :password %>
-	</p>
-	<p>
-		<%= f.submit 'Submit', class: 'btn btn-dark' %>
-	</p>
-<% end %>
+<%= render "layouts/error_of_validation" %>
+
+<div class="alert alert-dark">
+	<%= form_for(@user) do |f| %>
+
+		<div class="col-md-4 mb-3">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+
+		<div class="col-md-4 mb-3">
+			<%= f.label :email %>
+			<%= f.email_field :email, class: "form-control" %>
+		</div>
+
+		<div class="col-md-4 mb-3">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
+			<small class="text-muted">Must be 5-20 characters long.</small>
+		</div>
+
+		<div class="col-md-4 mb-3">
+			<%= f.submit "Submit", class: "btn btn-dark" %>
+		</div>
+
+	<% end %>
+</div>

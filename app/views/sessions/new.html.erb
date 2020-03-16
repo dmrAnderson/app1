@@ -1,15 +1,17 @@
 <h1>Sing In</h1>
-
-<%= form_for(:session, url: singin_path) do |f| %>
-	<p>
-		<%= f.label :email %><br>
-		<%= f.email_field :email %>
-	</p>
-	<p>
-		<%= f.label :password %><br>
-		<%= f.password_field :password %>
-	</p>
-	<p>
-		<%= f.submit 'Submit', class: 'btn btn-dark' %>
-	</p>
-<% end %>
+<div class="alert alert-dark">
+	<%= form_for(:session, url: singin_path) do |f| %>
+		<div class="col-md-4 mb-3">
+			<%= f.label :email %>
+			<%= f.email_field :email, class: "form-control" %>
+		</div>
+		<div class="col-md-4 mb-3">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
+		</div>
+		<div class="col-md-4 mb-3">
+			<%= f.submit 'Submit', class: 'btn btn-dark' %>
+		</p>
+		</div>
+	<% end %>
+</div>
