@@ -1,4 +1,4 @@
-<h1>Sing In</h1>
+<h1>Sign In</h1>
 <div class="alert alert-dark">
 	<%= form_for(:session, url: signin_path) do |f| %>
 		<div class="col-md-4 mb-3">
@@ -11,6 +11,7 @@
 		</div>
 		<div class="col-md-4 mb-3">
 			<%= f.submit 'Submit', class: 'btn btn-dark' %>
+			<%= link_to  "Back", :root, class: "btn btn-outline-secondary" %>
 		</p>
 		</div>
 	<% end %>
