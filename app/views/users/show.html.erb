@@ -1,15 +1,6 @@
-<h1><%= @user.name %> profile</h1>
-<%= form_for(@user) do |f| %>
-	<p>
-		<%= f.label :name %><br>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.label :email %><br>
-		<%= f.email_field :email %>
-	</p>
-		<%= f.submit 'Submit', class: 'btn btn-dark' %>
-	</p>
-<% end %>
-
-<!-- FIX -->
+<h1>
+	Profile
+	<%= link_to "Edit", edit_user_path, class: "btn btn-outline-info" %>
+</h1>
+<h3><%= @user.name %></h3>
+<%= link_to  "Back", :root, class: "btn btn-outline-secondary" %>
