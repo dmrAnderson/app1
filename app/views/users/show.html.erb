@@ -5,4 +5,4 @@
 </h3>
 <p><small class="text-muted"><%= @user.email %>.</small></p>
 <%= link_to "Back", :root, class: "btn btn-outline-secondary" %>
-<%= link_to "Delete", :root, method: :delete, class: "btn btn-outline-danger" %> <!-- CRASH -->
+<%= link_to "Delete", @user, method: :delete, class: "btn btn-outline-danger" %> <!-- CRASH -->

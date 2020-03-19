@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user.destroy
+		reset_session
 		redirect_to :root, warning: "Your profile has been successfully deleted."
 	end
 	
