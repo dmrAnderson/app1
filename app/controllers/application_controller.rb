@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
 	add_flash_types :success, :danger, :info, :warning
 
 	private
@@ -13,5 +12,4 @@ class ApplicationController < ActionController::Base
 		def log_in
 			session[:user_id] = @user.id
 		end
-
 end
