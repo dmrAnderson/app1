@@ -3,15 +3,19 @@
     <%= link_to "sample app", :root, id: "logo", class: "navbar-brand" %>
     <ul class="navbar-nav">
 			<% if current_user %>
-				<li class="nav-item">
-					<%= link_to current_user.name, user_path(current_user.id), class: "nav-link", id: "user-name" %>
-				</li>
-				<li class="nav-item">
-					<%= link_to  "Sign Out", :signout, class: "nav-link" %>
+				<li class="nav-item dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<%= current_user.name %>
+					</button>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<%= link_to "Your Profile", user_path(current_user.id), class: "dropdown-item" %>
+						<div class="dropdown-divider"></div>
+						<%= link_to  "Sign Out", :signout, class: "dropdown-item" %>
+					</div>
 				</li>
 			<% else %>
 				<li class="nav-item">
-					<%= link_to  "Sign Up", :signup, class: "nav-link" %>
+					<%= link_to  "Sign Up", :signup, class: "nav-link", id: "more-visible" %>
 				</li>
 				<li class="nav-item">
 					<%= link_to  "Sign In", :signin, class: "nav-link" %>
