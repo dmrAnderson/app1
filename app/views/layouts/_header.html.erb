@@ -7,15 +7,15 @@
 					<%= link_to current_user.name, user_path(current_user.id), class: "nav-link", id: "user-name" %>
 				</li>
 				<li class="nav-item">
-      	  <%= link_to  "Sign Out", :signout, class: "nav-link" %>
-      	</li>
+					<%= link_to  "Sign Out", :signout, class: "nav-link" %>
+				</li>
 			<% else %>
-      	<li class="nav-item">
-        	<%= link_to  "Sign Up", :signup, class: "nav-link" %>
-      	</li>
 				<li class="nav-item">
-      	  <%= link_to  "Sign In", :signin, class: "nav-link" %>
-      	</li>
+					<%= link_to  "Sign Up", :signup, class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to  "Sign In", :signin, class: "nav-link" %>
+				</li>
 			<% end %>
 		</ul>
 	</div>

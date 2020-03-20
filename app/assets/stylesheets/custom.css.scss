@@ -69,3 +69,18 @@ footer {
 		}
 	}
 }
+
+ul {
+	color: red;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.field_with_errors {
+  .form-control {
+    border-color: #f5c6cb;
+  }
+}

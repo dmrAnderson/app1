@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 			log_in
 			redirect_to :root, success: "Welcome back, you Log In."
 		else
-			flash[:danger] = "Incorrect username or password."
+			flash.now[:danger] = "Incorrect username or password."
 			render :new
 		end
 	end
