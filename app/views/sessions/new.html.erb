@@ -1,20 +1,24 @@
 <h1>Sign In</h1>
-<div class="alert alert-dark">
-	<%= form_for(:session, url: signin_path) do |f| %>
-		<div class="col-md-4 mb-3">
-			<%= f.label :email %>
-			<%= f.email_field :email, class: "form-control" %>
-		</div>
-		<div class="col-md-4 mb-3">
-			<%= f.label :password %>
-			<%= f.password_field :password, class: "form-control" %>
-		</div>
-		<div class="col-md-4 mb-3">
-			<%= f.submit 'Submit', class: 'btn btn-dark' %>
-			<%= link_to  "Back", :root, class: "btn btn-outline-secondary" %>
-		</p>
-		</div>
-	<% end %>
-</div>
+<%= form_for(:session, url: signin_path) do |f| %>
+	<div class="col-md-4 mb-3">
+		<%= f.label :email %>
+		<%= f.email_field :email, class: "form-control" %>
+	</div>
+	<div class="col-md-4 mb-3">
+		<%= f.label :password %>
+		<%= f.password_field :password, class: "form-control" %>
+	</div>
+	<div class="col-md-4 mb-3">
+		<%= f.label :remember_me, class: "checkbox inline" do %>
+		<%= f.check_box :remember_me %>
+		<span>Remember me on this computer</span>
+		<% end %>
+	</div>
+	<div class="col-md-4 mb-3">
+		<%= f.submit 'Submit', class: 'btn btn-dark' %>
+		<%= link_to  "Back", :root, class: "btn btn-outline-secondary" %>
+	</p>
+	</div>
+<% end %>
 
-<!--FIX div class-->
+<!--FIX style-->

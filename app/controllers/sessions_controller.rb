@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 	def create
 		user = User.find_by_email(params[:session][:email])
 		if user && user.authenticate(params[:session][:password])
+			remember(user)
 			log_in(user)
 			redirect_to :root, success: "Welcome back, you Log In."
 		else
