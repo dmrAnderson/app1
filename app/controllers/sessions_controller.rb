@@ -2,9 +2,9 @@ class SessionsController < ApplicationController
   def new; end
 	
 	def create
-		user = User.find_by_email(params[:session][:email])
+		user = User.find_by_email(params[:session][:email].downcase)
 		if user && user.authenticate(params[:session][:password])
-			remember(user)
+			remember(user) if params[:session][:remember_me] == "1"
 			log_in(user)
 			redirect_to :root, success: "Welcome back, you Log In."
 		else
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		reset_session
+		log_out(current_user)
 		redirect_to :root, info: "Bay-bay, it was nice to see you."
 	end
 end
