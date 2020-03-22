@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [:show, :edit, :update, :destroy]
+	before_action :logged_in, only: [:edit, :update, :destroy]
+	before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def index; end
 
@@ -8,9 +10,9 @@ class UsersController < ApplicationController
 	def new
 		@user = User.new
 	end
-	
+
 	def edit; end
-	
+
 	def create
 		@user = User.new(user_params)
 		if @user.save
@@ -34,14 +36,22 @@ class UsersController < ApplicationController
 		reset_session
 		redirect_to :root, warning: "Your profile has been successfully deleted."
 	end
-	
+
 	private
-	
+
 		def find_user
 			@user = User.find(params[:id])
 		end
-	
+
 		def user_params
 			params.require(:user).permit(:name, :email, :password)
+		end
+
+		def logged_in
+			redirect_to :signup, danger: "Please log in." if !current_user
+		end
+
+		def correct_user(user="#{find_user}")
+			redirect_to :user if user != current_user
 		end
 end

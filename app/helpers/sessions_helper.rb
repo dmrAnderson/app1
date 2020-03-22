@@ -13,7 +13,7 @@ module SessionsHelper
 
 	def log_out(user)
 		reset_session
-		User.find(user.id).update_attribute(:remember_token, nil)
+		User.find(user.id).update(remember_token: nil)
     cookies.delete(:remember_token)
   end
 
@@ -22,7 +22,7 @@ module SessionsHelper
   end
 
 	def remember(user)
-		user.update_attribute(:remember_token, generate_token)
+		user.update(remember_token: "#{generate_token}")
 		cookies.signed[:remember_token] = generate_token
 	end
 
@@ -31,5 +31,4 @@ module SessionsHelper
 			User.find_by_remember_token("#{token}")
 		end
 	end
-
 end
