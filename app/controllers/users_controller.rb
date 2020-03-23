@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	before_action :find_user,      only: [:show, :edit, :update, :destroy]
 	before_action :unknown_users,  only: [:index, :edit, :update, :destroy]
-	before_action :defended_users, only: [:edit, :update, :destroy]
+	before_action :defended_users, only: [:edit, :update]
+	before_action :admin_user,     only: [:destroy]
 
 	def index
 		@users = User.paginate(page: params[:page], per_page: 15)
@@ -32,11 +33,10 @@ class UsersController < ApplicationController
 			render :edit
 		end
 	end
-
+	
 	def destroy
 		@user.destroy
-		reset_session
-		redirect_to :root, warning: "Your profile has been successfully deleted."
+		redirect_to :users, warning: "User deleted."
 	end
 
 	private
@@ -55,5 +55,9 @@ class UsersController < ApplicationController
 
 		def defended_users
 			redirect_to @user if !current_user?(@user)
+		end
+
+		def admin_user
+			redirect_to :root if !current_user.admin?
 		end
 end

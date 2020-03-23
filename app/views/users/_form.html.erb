@@ -24,7 +24,6 @@
 			<div class="form-group">
 				<% color = action_name == "new" ? "dark" : "success" %>
 				<%= f.submit "Submit", class: "btn btn-#{color}" %>
-				<%= link_to "Delete", @user, method: :delete, class: "btn btn-outline-danger" %>
 				<%= link_to  "Back", :root, class: "btn btn-outline-secondary" %>
 			</div>
 		<% end %>
