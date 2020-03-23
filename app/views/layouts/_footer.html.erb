@@ -1,13 +1,13 @@
 <footer class="footer">
-  <small>
-    The <%= link_to "Believer", "#" %>
-    by <%= link_to "Artem", "#" %>
+  <small id="author">
+    The  <b><%= link_to "Sample App", :root %></b>
+    by <b><%= link_to "Artem", User.find(1) %></b>
   </small>
   <nav>
     <ul>
-      <li><%= link_to "About", "https://en.wikipedia.org/wiki/Ruby_on_Rails" %></li>
-      <li><%= link_to "Contact", "#" %></li>
-      <li><%= link_to "News", "https://www.bbc.com/news/world" %></li>
+      <li><%= link_to "About", "https://en.wikipedia.org/wiki/Ruby_on_Rails", target: "_blank" %></li>
+      <li><%= link_to "Contact", :contact %></li>
+      <li><%= link_to "News", "https://www.bbc.com/news/world", target: "_blank" %></li>
     </ul>
   </nav>
 </footer>

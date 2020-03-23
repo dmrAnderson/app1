@@ -2,7 +2,6 @@
 <h3>
 	<%= gravatar_for(@user) %>
 	<%= @user.name %>
-	<%= link_to "Edit", edit_user_path, class: "btn btn-outline-info" %>
 </h3>
 <p>
 	<small class="text-muted">
@@ -10,4 +9,3 @@
 	</small>
 </p>
 <%= link_to "Back", :root, class: "btn btn-outline-secondary" %>
-<%= link_to "Delete", @user, method: :delete, class: "btn btn-outline-danger" %>

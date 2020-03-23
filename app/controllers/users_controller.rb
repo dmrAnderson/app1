@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
-	before_action :find_user, only: [:show, :edit, :update, :destroy]
-	before_action :logged_in, only: [:edit, :update, :destroy]
-	before_action :correct_user, only: [:edit, :update, :destroy]
+	before_action :find_user,      only: [:show, :edit, :update, :destroy]
+	before_action :unknown_users,  only: [:index, :edit, :update, :destroy]
+	before_action :defended_users, only: [:edit, :update, :destroy]
 
-	def index; end
+	def index
+		@users = User.all
+	end
 
 	def show; end
 
@@ -47,11 +49,11 @@ class UsersController < ApplicationController
 			params.require(:user).permit(:name, :email, :password)
 		end
 
-		def logged_in
+		def unknown_users
 			redirect_to :signup, danger: "Please log in." if !current_user
 		end
 
-		def correct_user(user="#{find_user}")
-			redirect_to :user if user != current_user
+		def defended_users
+			redirect_to @user if !current_user?(@user)
 		end
 end

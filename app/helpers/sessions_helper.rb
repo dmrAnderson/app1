@@ -7,6 +7,10 @@ module SessionsHelper
 		end
 	end
 
+	def current_user?(user)
+    user == current_user
+  end
+
 	def log_in(user)
 		session[:user_id] = user.id
 	end
@@ -22,13 +26,13 @@ module SessionsHelper
   end
 
 	def remember(user)
-		user.update(remember_token: "#{generate_token}")
+		user.update(remember_token: generate_token)
 		cookies.signed[:remember_token] = generate_token
 	end
 
 	def user_through_the_cookies
 		if (token = cookies.signed[:remember_token])
-			User.find_by_remember_token("#{token}")
+			User.find_by_remember_token(token)
 		end
 	end
 end
