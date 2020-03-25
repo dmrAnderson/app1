@@ -1,4 +1,4 @@
-User.create(name: 'Artem', email: 'hell61@ukr.net', password: 'gggggg', admin: 'true', activated: 'true')
+User.create(name: 'Artem', email: 'hell61@ukr.net', password: 'gggggg', admin: 'true', activated: 'false')
 
 49.times do
 	User.create(

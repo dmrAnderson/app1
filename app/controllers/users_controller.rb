@@ -20,10 +20,9 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			UserMailer.account_activation(@user).deliver_now
-			# log_in(@user)
-			redirect_to :root, info: "Please check your email to activate your account." #success: "Hi, now you have a new account."
+			redirect_to :root, info: "Please check your email to activate your account."
 		else
-			render :new, danger: "Ooops, something went wrong." 
+			render :new, danger: "Ooops, something went wrong."
 		end
 	end
 
