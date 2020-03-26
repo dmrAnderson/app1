@@ -9,6 +9,14 @@ class User < ApplicationRecord
   has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+	def activate
+		update(activation_token: true)
+	end
+
+	def send_activation_email
+		UserMailer.account_activation(self).deliver_now
+	end
+
 	private
 
 		def downcase_email

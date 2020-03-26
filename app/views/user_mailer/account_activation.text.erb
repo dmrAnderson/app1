@@ -1,3 +1,5 @@
-Hello, <%= @user.name %>!
-It's your activation link
+Hello, <%= @user.name %>! It's Simple App.
+
+You heve to click this link for activation your account
+
 Click --> <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
