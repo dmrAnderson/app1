@@ -22,3 +22,4 @@ class SessionsController < ApplicationController
 		redirect_to :root, info: "Bay-bay, it was nice to see you."
 	end
 end
+# FIX add block filter to signin current_user 

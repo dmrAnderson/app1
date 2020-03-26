@@ -10,11 +10,24 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 	def activate
-		update(activation_token: true)
+		update(activated: true)
+	end
+
+	def create_reset_token
+		update_attribute(:reset_token, SecureRandom.urlsafe_base64) # FIX DRY
+		update_attribute(:reset_sent_at, Time.zone.now)
+	end
+
+	def send_reset_token
+		UserMailer.password_reset(self).deliver_now
 	end
 
 	def send_activation_email
 		UserMailer.account_activation(self).deliver_now
+	end
+
+	def password_reset_expired?
+		(reset_sent_at < 2.hours.ago)
 	end
 
 	private
@@ -24,6 +37,6 @@ class User < ApplicationRecord
 		end
 
 		def create_activation_token
-			self.activation_token = SecureRandom.urlsafe_base64
+			self.activation_token = SecureRandom.urlsafe_base64	# FIX DRY
 		end
 end
