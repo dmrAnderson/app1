@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
-	before_action :find_user,      only: [:show, :edit, :update, :destroy]
-	before_action :unknown_users,  only: [:index, :edit, :update, :destroy]
-	before_action :defended_users, only: [:edit, :update]
-	before_action :admin_user,     only: [:destroy]
+	before_action :find_user,             only: [:show, :edit, :update, :destroy]
+	before_action :unknown_users,         only: [:index, :edit, :update, :destroy]
+	before_action :defended_users,        only: [:edit, :update]
+	before_action :admin_user,            only: [:destroy]
+	before_action :redirect_current_user, only: [:new, :create]
 
 	def index
-		@users = User.paginate(page: params[:page], per_page: 15)
+		@users = User.where(activated: true).paginate(page: params[:page], per_page: 15)
 	end
 
-	def show; end
+	def show;
+		redirect_to :root if !@user.activated
+	end
 
 	def new
 		@user = User.new
@@ -33,7 +36,7 @@ class UsersController < ApplicationController
 			render :edit
 		end
 	end
-	
+
 	def destroy
 		@user.destroy
 		redirect_to :users, warning: "User deleted."

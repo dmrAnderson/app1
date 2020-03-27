@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  def new; end
+	before_action :redirect_current_user, except: [:destroy]
+
+	def new; end
 
 	def create
 		user = User.find_by_email(params[:session][:email].downcase)
@@ -22,4 +24,3 @@ class SessionsController < ApplicationController
 		redirect_to :root, info: "Bay-bay, it was nice to see you."
 	end
 end
-# FIX add block filter to signin current_user 

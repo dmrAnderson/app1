@@ -1,4 +1,5 @@
 module SessionsHelper
+
 	def current_user
 		if session[:user_id]
 			current_user ||= User.find(session[:user_id])
@@ -17,7 +18,7 @@ module SessionsHelper
 
 	def log_out(user)
 		reset_session
-		User.find(user.id).update(remember_token: nil)
+		user.update(remember_token: nil)
     cookies.delete(:remember_token)
   end
 

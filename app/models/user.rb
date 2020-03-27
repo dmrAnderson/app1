@@ -10,12 +10,14 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 	def activate
-		update(activated: true)
+		update_columns(activated: true, activation_token: nil)
 	end
 
 	def create_reset_token
-		update_attribute(:reset_token, SecureRandom.urlsafe_base64) # FIX DRY
-		update_attribute(:reset_sent_at, Time.zone.now)
+		update_columns(
+			reset_token: SecureRandom.urlsafe_base64, # FIX DRY
+			reset_sent_at: Time.zone.now
+		)
 	end
 
 	def send_reset_token
@@ -27,7 +29,7 @@ class User < ApplicationRecord
 	end
 
 	def password_reset_expired?
-		(reset_sent_at < 2.hours.ago)
+		reset_sent_at < 2.hours.ago
 	end
 
 	private

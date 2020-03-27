@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
 	before_action :find_user,        only: [:edit, :update]
 	before_action :valid_user,       only: [:edit, :update]
 	before_action :check_expiration, only: [:edit, :update]
+	before_action :redirect_current_user
 
 	def new; end
 
@@ -23,7 +24,8 @@ class PasswordResetsController < ApplicationController
 		if params[:user][:password].empty?
 			@user.errors.add(:password, "can't be empty")
 			render :edit
-		elsif @user.update(password_params)
+		elsif @user.update( password: password_params, # Is it normal spelling?
+												reset_token: nil, reset_sent_at: nil ) 
 			log_in(@user)
 			redirect_to @user, success: "Password has been reset."
 		else
@@ -43,7 +45,7 @@ class PasswordResetsController < ApplicationController
 
 		def valid_user
 			if !(@user && @user.activated? && (@user.reset_token == params[:id]))
-				redirect_to :root, warning: "Something went wrong." 
+				redirect_to :root, warning: "Something went wrong."
 			end
 		end
 

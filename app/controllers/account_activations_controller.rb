@@ -1,4 +1,5 @@
 class AccountActivationsController < ApplicationController
+	before_action :redirect_current_user
 
 	def edit
 		user = User.find_by_email(params[:email])
