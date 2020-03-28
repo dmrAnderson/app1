@@ -2,6 +2,10 @@
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
 	<% if (current_user.admin? && !current_user?(user)) %>
-		<%= link_to "Delete", user, method: :delete, class: "btn btn-outline-danger" %>
+		<%= link_to "Delete", user, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+		<div class="small text-muted">
+			<%= user.email %>
+		</div>
 	<% end %>
 </li>
+<!--edit style-->
