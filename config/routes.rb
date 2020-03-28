@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 	get    'signin',  to: 'sessions#new'
 	post   'signin',  to: 'sessions#create'
 	delete 'signout', to: 'sessions#destroy'
-	resources :users, except: [:new]
-	resources :account_activations, only: [:edit]
+	resources :users,             except: [:new]
+	resources :posts,               only: [:create, :destroy]
 	resources :password_resets,     only: [:new, :create, :edit, :update]
+	resources :account_activations, only: [:edit]
 end

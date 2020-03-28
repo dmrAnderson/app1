@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :find_user,             only: [:show, :edit, :update, :destroy]
-	before_action :unknown_users,         only: [:index, :edit, :update, :destroy]
+	before_action :logged_in_user,        only: [:index, :edit, :update, :destroy]
 	before_action :frendly_redirect,      only: [:edit, :update]
 	before_action :redirect_current_user, only: [:new, :create]
 	before_action :admin_user,            only: [:destroy]
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 	def edit; end
 
 	def create
-		@user = User.new(user_params(:name, :email, :password)) # T	est
+		@user = User.new(user_params(:name, :email, :password)) # Test
 		if @user.save
 			@user.send_activation_email
 			redirect_to :root, info: "Please check your email to activate your account."
@@ -49,16 +49,12 @@ class UsersController < ApplicationController
 			@user = User.find(params[:id])
 		end
 
-		def user_params(atr1="", atr2="", atr3="", atr4="")
+		def user_params(atr1, atr2=nil, atr3=nil, atr4=nil) # Test
 			params.require(:user).permit(atr1, atr2, atr3, atr4)
 		end
 # Filters -- redirect
 		def show_activated_user
 			redirect_to :root, warning: "This user not activated." if !@user.activated?
-		end
-
-		def unknown_users
-			redirect_to :signup, danger: "Please log in." if !current_user
 		end
 
 		def frendly_redirect

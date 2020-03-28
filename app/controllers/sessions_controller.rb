@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 			if user.activated?
 				remember(user) if params[:session][:remember_me] == "1"
 				log_in(user)
-				redirect_to user, success: "Welcome back, you Log In."
+				redirect_to :root, success: "Welcome back, you Log In."
 			else
 				redirect_to :root, warning: "Account not activated. Check your email for the activation link."
 			end

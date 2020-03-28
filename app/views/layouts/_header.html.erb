@@ -2,13 +2,9 @@
 	<div class="container">
     <%= link_to "sample app", :root, id: "logo" %>
     <ul class="navbar-nav">
-			<li class="nav-item">
-				<%= link_to  "Home", :root, class: "nav-link" %>
-			</li>
+			<%= content_tag(:li, (link_to  "Home", :root, class: "nav-link"), class: "nav-item" ) %>
 			<% if current_user %>
-				<li class="nav-item">
-					<%= link_to  "Users", :users, class: "nav-link" %>
-				</li>
+				<%= content_tag(:li, (link_to "Users", :users, class: "nav-link"), class: "nav-item") %>
 				<li class="nav-item dropdown">
 					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,12 +18,8 @@
 					</div>
 				</li>
 			<% else %>
-				<li class="nav-item">
-					<%= link_to  "Sign Up", :signup, class: "nav-link", id: "more-visible" %>
-				</li>
-				<li class="nav-item">
-					<%= link_to  "Sign In", :signin, class: "nav-link" %>
-				</li>
+				<%= content_tag(:li, (link_to "Sign Up", :signup, class: "nav-link"), class: "nav-item") %>
+				<%= content_tag(:li, (link_to "Sign In", :signin, class: "nav-link"), class: "nav-item") %>
 			<% end %>
 		</ul>
 	</div>
