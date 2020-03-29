@@ -1,30 +1,21 @@
-<% if current_user %>
+<% if @user %>
 	<div class="row">
-		<aside class="col-md-4">
-			<section class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
-				<%= link_to gravatar_for(current_user, size: 50), current_user %>
-				<div class="d-flex justify-content-between align-items-center">
-				<h4 class="m-0"><%= current_user.name %></h4>
-				<%= link_to "view my profile", current_user %>
-				</div>
-				<small><%= pluralize(current_user.posts.count, "Post") %></small>
-			</section>
-			<section class="">
-				<%= form_for(@post) do |f| %>
-					<%= render 'layouts/error_of_validation', object: f.object %>
-					<div class="">
-						<%= f.text_area :content, placeholder: "Compose new post...", class: "w-10" %>
-					</div>
-					<%= f.submit "Post", class: "btn btn-primary" %>
+		<div class="col-md-4">
+			<%= render "users/user_label" %>
+			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
+				<%= form_for(@create_post) do |f| %>
+					<%= render 'layouts/error_of_validation', object: f.object %> <!--FIX-->
+					<%= f.text_area :content, placeholder: "Compose new post...", class: "w-100 form-control" %>
+					<%= f.submit "Post", class: "btn btn-lg btn-primary btn-block text-center mt-2" %>
 				<% end %>
-			</section>
-		</aside>
+			</div>
+		</div>
 		<div class="col-md-8">
 			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
 				<h3 class="border-bottom border-gray pb-2 mb-0 text-center">Posts</h3>
-				<% if @my_posts.any? %>
-					<%= render @my_posts %>
-					<%= will_paginate @my_posts, class: "text-center mt-3" %>
+				<% if @posts.any? %>
+					<%= render @posts %>
+					<%= will_paginate @posts, class: "text-center mt-3" %>
 				<% end %>
 			</div>
 		</div>
