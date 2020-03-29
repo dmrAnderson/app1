@@ -1,5 +1,5 @@
 <h1>Profile</h1>
-<div class="row featurette">
+<div class="row">
 	<div class="col-md-4">
 		<div class="d-flex align-items-center p-3 my-3 bg-white rounded shadow-sm">
 			<%= gravatar_for(@user) %>
@@ -12,9 +12,9 @@
 	<div class="col-md-8">
 		<% if @user.posts.any? %>
 			<div class="my-3 p-3 bg-white rounded shadow-sm">
-				<h6 class="border-bottom border-gray pb-2 mb-0">
-					Posts (<%= @user.posts.count %>)
-				</h6>
+				<h5 class="border-bottom border-gray pb-2 mb-0 text-center">
+					<%= pluralize(@user.posts.count, "Post") %>
+				</h5>
 				<%= render @posts %>
 				<%= will_paginate @posts, class: "text-center mt-3" %>
 			</div>
