@@ -1,7 +1,9 @@
 <% if @user %>
 	<div class="row">
 		<div class="col-md-4">
-			<%= render "users/user_label" %>
+			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
+				<%= render "users/label" %>
+			</div>
 			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
 				<%= form_for(@create_post) do |f| %>
 					<%= render 'layouts/error_of_validation', object: f.object %> <!--FIX-->
@@ -11,12 +13,8 @@
 			</div>
 		</div>
 		<div class="col-md-8">
-			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
-				<h3 class="border-bottom border-gray pb-2 mb-0 text-center">Posts</h3>
-				<% if @posts.any? %>
-					<%= render @posts %>
-					<%= will_paginate @posts, class: "text-center mt-3" %>
-				<% end %>
+			<div class="p-3 my-3 bg-white rounded shadow-sm">
+				<%= render "posts/for_users" %>
 			</div>
 		</div>
 	</div>
