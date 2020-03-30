@@ -21,17 +21,17 @@ class UsersController < ApplicationController
 	def edit; end
 
 	def create
-		@user = User.new(user_params(:name, :email, :password)) # Test
+		@user = User.new(user_params(:name, :email, :password))
 		if @user.save
 			@user.send_activation_email
 			redirect_to :root, info: "Please check your email to activate your account."
 		else
-			render :new, danger: "Something went wrong."
+			render :new
 		end
 	end
 
 	def update
-		if @user.update(user_params(:name, :email, :password, :password_confirmation)) # Test
+		if @user.update(user_params(:name, :email, :password, :password_confirmation))
 			redirect_to @user, success: "Your profile has been successfully updated."
 		else
 			render :edit
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 			@user = User.find(params[:id])
 		end
 
-		def user_params(atr1, atr2=nil, atr3=nil, atr4=nil) # Test
+		def user_params(atr1, atr2=nil, atr3=nil, atr4=nil)
 			params.require(:user).permit(atr1, atr2, atr3, atr4)
 		end
 # Filters -- redirect

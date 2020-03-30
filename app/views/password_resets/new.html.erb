@@ -1,10 +1,7 @@
-<h1>Forgot password</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-				<%= f.label :email %>
-				<%= f.email_field :email, class: 'form-control' %>
-			<%= f.submit "Submit", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<h1 class="text-center font-weight-bold mt-2">Reset your password</h1>
+<%= form_for(:password_reset, url: password_resets_path, html: { class: "col-md-5 mx-auto"}) do |f| %>
+	<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
+		<%= f.email_field :email, autofocus: true, placeholder: "Enter your email address", class: "form-control" %>
+		<%= f.submit 'Submit', class: "btn btn-lg btn-primary btn-block mb-1 mt-3" %>
+	</div>
+<% end %>

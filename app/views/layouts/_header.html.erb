@@ -1,7 +1,7 @@
 <header class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<div class="container">
-    <%= link_to "sample app", :root, id: "logo" %>
-    <ul class="navbar-nav">
+    <%= link_to "Sample App", :root, class: "h2 font-weight-bold text-decoration-none text-white m-0" %>
+		<ul class="navbar-nav">
 			<%= content_tag(:li, (link_to  "Home", :root, class: "nav-link"), class: "nav-item" ) %>
 			<% if current_user %>
 				<%= content_tag(:li, (link_to "Users", :users, class: "nav-link"), class: "nav-item") %>

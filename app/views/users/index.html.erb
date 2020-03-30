@@ -1,6 +1,6 @@
-<h1>All users</h1>
-<%= will_paginate @users, class: "text-center mb-3" %> <!--FIX should be bootstrap view-->
+<h1 class="text-center font-weight-bold mt-2">All users</h1>
+<%= will_paginate @users, class: "text-center mb-3" %>
 <ul class="list-group">
 	<%= render @users %>
 </ul>
-<%= will_paginate @users, class: "text-center mt-3"%> <!--FIX should be bootstrap view-->
+<%= will_paginate @users, class: "text-center mt-3"%>

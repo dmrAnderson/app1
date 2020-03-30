@@ -1,61 +1,10 @@
 $light-gray: #777;
 
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $light-gray;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-#logo {
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  font-weight: bold;	
-	&:hover {
-		text-decoration: none;
-	}
-}
-
-.signin {
-	width: 100%;
-  max-width: 420px;
-  padding: 15px;
-	margin: auto;
-}
-
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: $light-gray;
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid #eaeaea;
+	color: $light-gray;
 	a {
 		color: #555;
 		&:hover {
@@ -75,17 +24,8 @@ footer {
 	}
 }
 
-ul {
-	color: red;
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
 .field_with_errors {
-  .form-control {
-    border-color: #f5c6cb;
-  }
+	.form-control {
+		border-color: #f5c6cb;
+	}
 }
