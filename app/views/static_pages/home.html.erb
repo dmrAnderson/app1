@@ -1,12 +1,12 @@
-<% if @user %>
+<% if (@user = current_user) %>
 	<div class="row">
 		<div class="col-md-4">
 			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
 				<%= render "users/label" %>
 			</div>
 			<div class="align-items-center p-3 my-3 bg-white rounded shadow-sm">
-				<%= form_for(@create_post) do |f| %>
-					<%= render 'layouts/error_of_validation', object: f.object %> <!--FIX-->
+				<%= form_for(@post) do |f| %>
+					<%= render "layouts/error_of_validation", object: f.object %>
 					<%= f.text_area :content, placeholder: "Compose new post...", class: "w-100 form-control" %>
 					<%= f.submit "Post", class: "btn btn-lg btn-primary btn-block text-center mt-2" %>
 				<% end %>

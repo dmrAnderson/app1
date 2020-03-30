@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
 	def create
 		@post = current_user.posts.build(post_params)
+		@posts = current_user.send_posts.paginate(page: params[:page], per_page: 8)
 		if @post.save
 			redirect_to :root, success: "Post created!"
 		else
