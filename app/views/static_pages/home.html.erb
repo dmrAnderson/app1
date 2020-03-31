@@ -29,5 +29,8 @@
 		<%= link_to "Sign up now!", :signup, class: "btn btn-lg btn-primary" %>
 	</div>
 	<%= link_to image_tag("logo.png", alt: "Rails logo", size: "165x200"), "http://rubyonrails.org/" %>
-	<%= request.url %>
+	<div>
+		user request -> (<%= request.url %>)<br>
+		user come from -> (<%= request.referrer %>)
+	</div>
 <% end %>

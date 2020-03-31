@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	has_many :posts
+	has_many :posts, dependent: :destroy
 
 	before_save :downcase_email
 	before_create :create_activation_token
@@ -35,7 +35,7 @@ class User < ApplicationRecord
 		reset_sent_at < 2.hours.ago
 	end
 
-	def send_posts
+	def get_posts
 		Post.where("user_id = ?", id)
 	end
 
