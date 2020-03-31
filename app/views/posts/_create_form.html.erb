@@ -1,0 +1,11 @@
+<div class="p-3 my-3 bg-white rounded shadow-sm">
+	<%= form_for(@post, html: { multipart: true }) do |f| %>
+		<%= render "layouts/error_of_validation", object: f.object %>
+		<%= f.text_area :content, placeholder: "Compose new post...", class: "w-100 form-control" %>
+		<div class="custom-file mt-2">
+			<%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+			<%= f.label :picture, "Add your picture", class: "text-muted custom-file-label" %>
+		</div>
+		<%= f.submit "Post", class: "btn btn-lg btn-primary btn-block text-center mt-2" %>
+	<% end %>
+</div>
