@@ -25,6 +25,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Include other gems
 gem 'faker', '~> 2.10', '>= 2.10.2'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'carrierwave', '~> 2.1'
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

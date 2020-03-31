@@ -13,6 +13,7 @@
 					<%= post.content %>
 					<%= link_to "Delete", post, method: :delete, class: "badge badge-danger" if current_user?(post.user) %>
 				</div>
+				<%= image_tag(post.picture.url) if post.picture? %>
 			</div>
 		</div>
 	<% end %>
