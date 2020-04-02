@@ -1,0 +1,8 @@
+<div class="">
+  <%= link_to followers_user_path(@user), class: "badge badge-info", id: "followers" do %>
+		Followers <%= content_tag(:span, @user.followers.count, class: "badge badge-light") %>
+	<% end %>
+  <%= link_to following_user_path(@user), class: "badge badge-info", id: "following" do %>
+		Following <%= content_tag(:span, @user.following.count, class: "badge badge-light") %>
+	<% end %>
+</div>

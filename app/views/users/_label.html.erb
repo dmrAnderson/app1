@@ -8,4 +8,5 @@
 		<small class="text-muted"><%= @user.email %></small>
 		<%= content_tag(:div, pluralize(@user.posts.count, "post"), class: "small text-muted") %>
 	</div>
+	<%= render "users/follow_status" %>
 </div>
