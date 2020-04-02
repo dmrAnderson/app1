@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 		if @post.save
 			redirect_to :root, success: "Post created."
 		else
-			render "static_pages/home"
+			render "static_pages/home" # FIX if you reload a render page - app will be crush
 		end
 	end
 
