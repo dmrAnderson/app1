@@ -14,7 +14,10 @@ class PostsController < ApplicationController
 
 	def destroy
 		@post.destroy
-		redirect_to (request.referrer || :root), success: "Post deleted."
+		respond_to do |format|
+			format.html { redirect_to (request.referrer || :root), success: "Post deleted." }
+			format.js
+		end
 	end
 
 	private
