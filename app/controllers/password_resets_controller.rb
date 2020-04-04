@@ -24,8 +24,8 @@ class PasswordResetsController < ApplicationController
 		if params[:user][:password].empty?
 			@user.errors.add(:password, "can't be empty")
 			render :edit
-		elsif @user.update( password: password_params, # Is it normal spelling?
-												reset_token: nil, reset_sent_at: nil ) 
+		elsif @user.update(password: password_params, reset_token: nil,
+																									reset_sent_at: nil) 
 			log_in(@user)
 			redirect_to @user, success: "Password has been reset."
 		else
@@ -44,7 +44,7 @@ class PasswordResetsController < ApplicationController
 		end
 
 		def valid_user
-			if !(@user && @user.activated? && (@user.reset_token == params[:id]))
+			unless @user && @user.activated? && (@user.reset_token == params[:id])
 				redirect_to :root, warning: "Something went wrong."
 			end
 		end

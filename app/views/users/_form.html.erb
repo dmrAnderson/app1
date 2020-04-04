@@ -10,17 +10,11 @@
 				<%= f.label :email %>
 				<%= f.email_field :email, class: "form-control" %>
 			</div>
-			<div class="form-group <%= "mb-0" if action_name == "update" || action_name == "edit" %>">
+			<div class="form-group">
 				<%= f.label :password %>
 				<%= f.password_field :password, class: "form-control" %>
 				<div class="text-muted text-center small">Must be 6-20 characters long.</div>
 			</div>
-			<% if (action_name == "update" || action_name == "edit") %>
-				<div class="form-group">
-					<%= f.label :password_confirmation, "Confirmation" %>
-					<%= f.password_field :password_confirmation, class: "form-control" %>
-				</div>
-			<% end %>
 			<div class="form-group">
 				<%= f.submit "Submit", class: "btn btn-lg btn-primary btn-block mb-1" %>
 			</div>

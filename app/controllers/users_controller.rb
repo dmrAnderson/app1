@@ -22,17 +22,17 @@ class UsersController < ApplicationController
 	def edit; end
 
 	def create
-		@user = User.new(params.require(:user).permit(:name, :email, :password))
+		@user = User.new(user_params)
 		if @user.save
 			@user.send_activation_email
-			redirect_to :root, info: "Please check your email to activate your account."
+			redirect_to :root, info: "Please check your email."
 		else
 			render :new
 		end
 	end
 
 	def update
-		if @user.update(params.require(:user).permit(:name, :email, :password, :password_confirmation))
+		if @user.update(user_params)
 			redirect_to @user, success: "Your profile has been successfully updated."
 		else
 			render :edit
@@ -46,31 +46,35 @@ class UsersController < ApplicationController
 
 	def followers
 		@title = "Followers"
-		@users = @user.followers.paginate(page: params[:page])
+		@users = @user.followers.paginate(page: params[:page], per_page: 9)
 		render :index
 	end
 
 	def following
 		@title = "Following"
-		@users = @user.following.paginate(page: params[:page])
+		@users = @user.following.paginate(page: params[:page], per_page: 9)
 		render :index
 	end
 
 	private
 
+		def user_params
+			params.require(:user).permit(:name, :email, :password)
+		end
+
 		def find_user
 			@user = User.find(params[:id])
 		end
-# Filters -- redirect
+
 		def show_activated_user
-			redirect_to :root, warning: "This user not activated." if !@user.activated?
+			redirect_to :root, warning: "This user not activated." unless @user.activated?
 		end
 
 		def frendly_redirect
-			redirect_to @user if !current_user?(@user)
+			redirect_to @user unless current_user?(@user)
 		end
 
 		def admin_user
-			redirect_to :root if !current_user.admin?
+			redirect_to :root unless current_user.admin?
 		end
 end

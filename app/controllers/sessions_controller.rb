@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 				log_in(user)
 				redirect_to :root, success: "Welcome back, you Log In."
 			else
-				redirect_to :root, warning: "Account not activated. Check your email for the activation link."
+				redirect_to :root, warning: "Account not activated. Check your email."
 			end
 		else
 			flash.now[:danger] = "Incorrect username or password."

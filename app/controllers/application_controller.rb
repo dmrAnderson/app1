@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	private
 
 		def logged_in_user
-			redirect_to :signup, danger: "Please log in." if !current_user
+			redirect_to :signup, danger: "Please log in." unless current_user
 		end
 
 		def redirect_current_user

@@ -8,14 +8,17 @@ class PostsController < ApplicationController
 		if @post.save
 			redirect_to :root, success: "Post created."
 		else
-			render "static_pages/home" # FIX if you reload a render page - app will be crush
+			render "static_pages/home" # FIX
 		end
 	end
 
 	def destroy
 		@post.destroy
 		respond_to do |format|
-			format.html { redirect_to (request.referrer || :root), success: "Post deleted." }
+			format.html {
+				redirect_to (request.referrer || :root),
+				success: "Post deleted."
+			}
 			format.js
 		end
 	end
