@@ -1,11 +1,13 @@
-class StaticPagesController < ApplicationController
+# frozen_string_literal: true
 
-	def home
-		if current_user
-			@post = current_user.posts.build
-			@posts = current_user.get_posts.paginate(page: params[:page], per_page: 9)
-		end
-	end
+class StaticPagesController < ApplicationController
+  def home
+    if current_user
+      @post = current_user.posts.build
+      @posts = current_user.posts_for_user.paginate(page: params[:page],
+                                                    per_page: 9)
+    end
+  end
 
   def contact; end
 end
